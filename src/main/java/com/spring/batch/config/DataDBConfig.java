@@ -38,7 +38,7 @@ public class DataDBConfig {
         em. setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
         HashMap<String, Object> properties = new HashMap<>();
-        properties.put("hibernate.hbm2ddl.auto", "none"); // jpa ddl 설정
+        properties.put("hibernate.hbm2ddl.auto", "create"); // jpa ddl 설정
         properties.put("hibernate.show_sql", "true");
         em.setJpaPropertyMap(properties);
 

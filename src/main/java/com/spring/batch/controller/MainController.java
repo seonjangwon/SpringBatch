@@ -28,7 +28,6 @@ public class MainController {
     @GetMapping("/first")
     public String firstAPI(@RequestParam("value") String value) throws Exception {
 
-        // 원하는 파라미터 설정 방법??
         // value 값이 같으면 실행을 하지 않음
         JobParameters jobParameters = new JobParametersBuilder()
                 .addString("data",value)
@@ -36,6 +35,27 @@ public class MainController {
 
 
         jobLauncher.run(jobRegistry.getJob("firstJob"), jobParameters );
+
+        return "ok";
+    }
+
+
+    /**
+     * API batch 실행 방법
+     * @param value
+     * @return
+     * @throws Exception
+     */
+    @GetMapping("/second")
+    public String secondAPI(@RequestParam("value") String value) throws Exception {
+
+        // value 값이 같으면 실행을 하지 않음
+        JobParameters jobParameters = new JobParametersBuilder()
+                .addString("data",value)
+                .toJobParameters();
+
+
+        jobLauncher.run(jobRegistry.getJob("secondJob"), jobParameters );
 
         return "ok";
     }
